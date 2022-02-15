@@ -1,4 +1,4 @@
 agria_backoffice:
   path: /bo
   methods: [GET]
-  controller: App\Application\Controller\BackOfficeAction
+  controller: App\Application\Controller\Backoffice\BackOfficeAction

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Application\Controller;
+namespace App\Application\Controller\Backoffice;
 
 use App\Action;
+use App\Domain\Entity\User;
 use Doctrine\DBAL\DriverManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,11 +32,11 @@ class BackOfficeAction extends AbstractController implements Action
 
         $tables = $query->executeQuery()->fetchAllAssociative();
 
-//        $users = $this->getDoctrine()->getRepository(User::class)->findby([],['id' => 'DESC'],3,NULL);
+        $users = $this->getDoctrine()->getRepository(User::class)->findby([],['id' => 'DESC'],3,NULL);
 
         return $this->render('_backOffice/index.backoffice.html.twig', [
             'tables' => $tables,
-//            'users' => $users
+            'users' => $users
         ]);
     }
 }
