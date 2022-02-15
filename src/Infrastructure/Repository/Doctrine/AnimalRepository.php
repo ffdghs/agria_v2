@@ -14,20 +14,24 @@ class AnimalRepository extends ServiceEntityRepository implements AnimalReposito
         parent::__construct($registry, Animal::class);
     }
 
+    public function findAll(): array
+    {
+        return $this->createQueryBuilder('a')
+            ->getQuery()
+            ->getResult();
+    }
      /**
       * @param string $name
       * @return Animal[]
       */
     public function findAnimalByHabitat(string $name): array
     {
-        return $this->getEntityManager()->createQueryBuilder()
-        ->select('a')
-        ->from(Animal::class, 'a')
-        ->innerJoin('a.habitats', 'h')
-        ->where('h.name_habitat =:name')
-        ->setParameter('name',$name)
-        ->getQuery()
-        ->getResult();
+        return $this->createQueryBuilder('a')
+            ->innerJoin('a.habitats', 'h')
+            ->where('h.name_habitat =:name')
+            ->setParameter('name',$name)
+            ->getQuery()
+            ->getResult();
     }
 
     /**
@@ -36,24 +40,21 @@ class AnimalRepository extends ServiceEntityRepository implements AnimalReposito
      */
     public function findAnimalByContinent(int $id): array
     {
-        return $this->getEntityManager()->createQueryBuilder()
-        ->select('a')
-        ->from(Animal::class, 'a')
-        ->innerJoin('a.pins', 'p')
-        ->innerJoin('p.id_region_pin', 'r')
-        ->innerJoin('r.id_country_region', 'c')
-        ->innerJoin('c.id_continent_country', 'd')
-        ->where('d.id =:id')
-        ->setParameter('id',$id)
-        ->getQuery()
-        ->getResult();
+        return $this->createQueryBuilder('a')
+            ->innerJoin('a.pins', 'p')
+            ->innerJoin('p.id_region_pin', 'r')
+            ->innerJoin('r.id_country_region', 'c')
+            ->innerJoin('c.id_continent_country', 'd')
+            ->where('d.id =:id')
+            ->setParameter('id',$id)
+            ->getQuery()
+            ->getResult();
     }
 
     public function getContinentForAnimal(int $id): Animal
     {
-        return $this->getEntityManager()->createQueryBuilder()
-        ->select('a','p','r','c','d')
-        ->from(Animal::class, 'a')
+        return $this->createQueryBuilder('a')
+        ->select('a,p,r,c,d')
         ->innerJoin('a.pins', 'p')
         ->innerJoin('p.id_region_pin', 'r')
         ->innerJoin('r.id_country_region', 'c')
@@ -64,4 +65,18 @@ class AnimalRepository extends ServiceEntityRepository implements AnimalReposito
         ->getResult();
     }
 
+    public function saveAnimal(Animal $animal): Animal
+    {
+        $this->getEntityManager()->persist($animal);
+        $this->getEntityManager()->flush();
+
+        return $animal;
+    }
+
+    public function deleteAnimal(int $id): void
+    {
+        $animal = $this->find($id);
+        $this->getEntityManager()->remove($animal);
+        $this->getEntityManager()->flush();
+    }
 }

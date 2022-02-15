@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Animal
 {
     /**
+     * @var integer
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
@@ -20,87 +21,104 @@ class Animal
     private $id;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=255)
      */
     private $name_animal;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=255)
      */
     private $diet_animal;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=255)
      */
     private $status_animal;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=255)
      */
     private $family_animal;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=255)
      */
     private $population_animal;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=255)
      */
     private $description_animal;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=255)
      */
     private $nickname_animal;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=255)
      */
     private $main_picture_animal;
 
     /**
+     * @var Pin[]
      * @ORM\OneToMany(targetEntity=Pin::class, mappedBy="id_animal_pin")
      */
     private $pins;
 
 
     /**
+     * @var Habitat[]
      * @ORM\ManyToMany(targetEntity=Habitat::class, inversedBy="animals")
      */
     private $habitats;
 
     /**
+     * @var Picture[]
      * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="animal")
      */
     private $pictures;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=255)
      */
     private $appearance_animal;
 
     /**
+     * @var integer
      * @ORM\Column(type="integer")
      */
     private $legs_animal;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=255)
      */
     private $social_animal;
 
     /**
+     * @var User[]
      * @ORM\ManyToMany(targetEntity=User::class, mappedBy="favorite_animal_user")
      */
     private $user_favorite_animal;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $cutOut_image_animal;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $descMore_animal;
