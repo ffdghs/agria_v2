@@ -1,0 +1,103 @@
+.brand-logo img{
+    width: 50px;
+    margin: 10%;
+}
+
+h2 {
+    margin-top:2rem;
+}
+
+.fa-times-circle {
+    color:rgb(155, 61, 61);
+}
+
+.fa-pencil-alt {
+    color:#007bff;
+}
+
+
+table a > i {
+    font-size: 2rem;
+}
+
+table {
+    margin-top: 1rem;
+}
+
+
+/*****************************************************************************/
+/*********************************BACKOFFICE**********************************/
+/*****************************************************************************/
+
+/******************************/
+/********** LAYOUT ***********/
+/******************************/
+
+#logo_agria {
+    width:100px;
+}
+
+#menu_text {
+    font-size: 2rem;
+}
+#nav_menu * {
+    font-size: 1.6rem;
+}
+
+
+#dw-p1 header a {
+    font-size: 1.8rem;
+}
+
+#dw-p1 {
+    min-height: 94.5vh;
+    width:280px !important;
+}
+
+.bmd-drawer-f-l > .bmd-layout-drawer {
+    transform: translateX(-300px);
+}
+
+
+.bmd-layout-container{
+   min-height: 94.5vh;
+}
+
+
+/******************************/
+/*********** INDEX ************/
+/******************************/
+
+.card {
+    width:18rem;
+}
+
+/******************************/
+/********** ANIMALS ***********/
+/******************************/
+
+h2 {
+    text-align: center;
+}
+/* 
+#table-animal {
+    margin-top:3rem;
+} */
+
+#table-animal .fa-edit {
+    color:rgb(93, 93, 177);
+    font-size: 1rem;
+    margin-bottom:1rem;
+}
+
+#table-animal .fa-trash-alt {
+    color:rgb(157, 87, 87);
+    font-size: 1rem;
+}
+
+
+
+
+
+
+
