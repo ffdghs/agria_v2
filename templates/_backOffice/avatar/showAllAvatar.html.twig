@@ -1,0 +1,50 @@
+{% extends '_backOffice/layout.backoffice.html.twig' %}
+
+{% block title %}
+	{{parent()}}
+	- Liste d'avatar
+{% endblock %}
+
+
+{% block content %}
+	<div class="container">
+		<h2>Tous les avatars</h2>
+		<h4>
+			<a href="{{ path('agria_avatar_addAvatar') }}">
+				<i class="fas fa-plus-circle"></i> Ajouter une entrée</a>
+		</h4>
+		<table class="table thead-dark table-striped table-bordered table-light table-hover text-center table-sm">
+			<thead class="thead-dark">
+				<tr>
+					<th>id</th>
+					<th>Nom</th>
+					<th>Image</th>
+					<th>description</th>
+					<th>Editer</th>
+					<th>Supprimer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for avatar in allAvatars %}
+					<tr>
+						<td class="align-middle">{{avatar.id}}</td>
+						<td class="align-middle">{{ avatar.nameAvatar  }}</td>
+						<td class="align-middle"><img width="200px" src="{{ asset('assets/images/avatar/') }}{{ avatar.urlavatar }}" alt=""></td>
+						<td class="align-middle">{{avatar.descriptionAvatar}}</td>
+						<td class="align-middle">
+							<a href="{{ path('agria_avatar_update',{id: avatar.id}) }}">
+								<i class="fas fa-pencil-alt"></i>
+							</a>
+						</td>
+						<td class="align-middle">
+							<a href="{{ path('agria_avatar_delete', {id: avatar.id}) }}" onclick="return confirm('Voulez vous supprimer cette entrée ?')">
+								<i class="fas fa-times-circle"></i>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock %}

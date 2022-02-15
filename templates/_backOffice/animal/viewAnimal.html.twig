@@ -1,0 +1,13 @@
+{% extends "_backOffice/layout.backoffice.html.twig" %}
+
+{% block title %}
+  {{ parent()}} - Ajouter un animal
+{% endblock %}
+{% block content %}
+  {% if app.request.get('_route') == 'agria_animal_addAnimal' %}
+    <h2>Ajouter un nouvel animal</h2>
+    {% else %}
+    <h2>Modifier les informations d'un animal</h2>
+  {% endif %}
+<div class="container">{{ form(form)}}</div>
+{% endblock %}

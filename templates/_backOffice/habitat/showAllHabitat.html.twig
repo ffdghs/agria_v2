@@ -1,0 +1,35 @@
+{% extends '_backOffice/layout.backoffice.html.twig' %}
+
+{% block title %}
+
+    Habitat
+{% endblock %}
+
+{% block content %}
+    <h2>Tous les habitats</h2>
+    <h4><a href="{{path('agria_habitat_addHabitat')}}"><i class="fas fa-plus-circle"></i> Ajouter une entrée</a></h4>
+    <table class="table thead-dark table-striped table-bordered table-light table-hover text-center table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th>#</th>
+                <th>Habitat</th>
+                <th>Editer</th>
+				<th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for habitat in allHabitats %}
+            <tr>
+                <td class="align-middle">{{habitat.id}}</td>
+                <td class="align-middle">{{habitat.namehabitat}}</td>
+                <td class="align-middle">
+                    <a href="{{ path('agria_habitat_update',{id: habitat.id}) }}"><i class="fas fa-pencil-alt"></i></a>
+                </td>
+                <td class="align-middle">
+                    <a href="{{ path('agria_habitat_delete', {id: habitat.id}) }}" onclick="return confirm('Voulez vous supprimer cette entrée ?')"><i class="fas fa-times-circle"></i></a>
+                </td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends '_backOffice/layout.backoffice.html.twig' %}
+
+{% block title %}
+    {{parent()}} - Liste des animaux
+{% endblock %}
+
+
+
+{% block content %}
+
+    <style>
+        .container {
+            width:100% !important;
+            max-width:100% !important;
+        
+        }
+    </style>
+        <div class="row overflow-auto">
+            <div class="col">
+                <h2>Table Animal</h2>
+                <h4><a href="{{path('agria_animal_addAnimal')}}"><i class="fas fa-plus-circle"></i> Ajouter une entrée</a></h4>
+                <table class="table thead-dark table-striped table-bordered table-light table-hover text-center table-sm" id="table-animal">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Main Picture</th>
+                            <th>Cut Out Picture</th>
+                            <th>Diet</th>
+                            <th>Status</th>
+                            <th>Family</th>
+                            <th>Population</th>
+                            <th>Description</th>
+                            <th>Desc more</th>
+                            <th>Nickname</th>
+                            <th>Appearance</th>
+                            <th>Legs</th>
+                            <th>Social</th>
+                            <th>Habitat</th>
+                            <th>Editer</th>
+                            <th>Supprimer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for animal in allAnimals %}
+                            <tr>
+                                <td class="align-middle">{{animal.id}}</td>
+                                <td class="align-middle">{{ animal.nameanimal }}</td>
+                                <td class="align-middle"><img width="200px" src="{{ asset('assets/images/animal/') }}{{ animal.mainpictureanimal }}" alt=""></td>
+                                <td class="align-middle"><img width="200px" src="{{ asset('assets/images/animal/cutOuts/') }}{{ animal.cutoutimageanimal }}" alt=""></td>
+                                <td class="align-middle">{{ animal.dietanimal }}</td>
+                                <td class="align-middle">{{ animal.statusanimal }}</td>
+                                <td class="align-middle">{{ animal.familyanimal }}</td>
+                                <td class="align-middle">{{ animal.populationanimal }}</td>
+                                <td class="align-middle">{{ animal.descriptionanimal }}</td>
+                                <td class="align-middle">{{ animal.descmoreanimal }}</td>
+                                <td class="align-middle">{{ animal.nicknameanimal }}</td>
+                                <td class="align-middle">{{ animal.appearanceanimal }}</td>
+                                <td class="align-middle">{{ animal.legsanimal }}</td>
+                                <td class="align-middle">{{ animal.socialanimal }}</td>
+                                {% if animal.habitats is null %}
+                                    <td class="align-middle"></td>
+                                {% else %}
+                                    {% set habitats = animal.habitats %}
+                                    {% set habitat2 = '' %}
+                                    {% for habitat in habitats %}
+                                        {% if habitat2 == '' %}
+                                            {% set habitat2 = habitat.namehabitat %}
+                                            {% else %}
+                                            {% set habitat2 = habitat2 ~ ', ' ~ habitat.namehabitat %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    <td class="align-middle">{{ habitat2 | join }}</td>
+                                    
+                                {% endif %}
+                                <td class="align-middle"><a href="{{ path('agria_animal_update', {id: animal.id}) }}"><i class="fas fa-pencil-alt"></i></a></td>
+                                <td class="align-middle"><a href="{{ path('agria_animal_delete', {id: animal.id}) }}" onclick="return confirm('Voulez vous supprimer cette entrée ?')"><i class="fas fa-times-circle"></i></a></td>
+                            </tr>    
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+
+{% endblock %}

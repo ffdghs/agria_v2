@@ -1,0 +1,49 @@
+{% extends '_backOffice/layout.backoffice.html.twig' %}
+
+{% block title %}
+	{{parent()}}
+	- Liste d'images
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<h2>Toutes les images</h2>
+		<h4>
+			<a href="{{path('agria_picture_addPicture')}}">
+				<i class="fas fa-plus-circle"></i>
+				Ajouter une entrée</a>
+		</h4>
+		<table class="table thead-dark table-striped table-bordered table-light table-hover text-center table-sm">
+			<thead class="thead-dark">
+				<tr>
+					<th>#</th>
+					<th>Animal</th>
+					<th>Images</th>
+					<th>Editer</th>
+					<th>Supprimer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for images in allPicture %}
+					<tr>
+						<td class="align-middle">{{ images.id  }}</td>
+						<td class="align-middle">{{ images.animal.nameAnimal }}
+							({{ images.animal.id}})</td>
+						<td class="align-middle"><img width="200px" src="{{ asset('assets/images/picture/') }}{{ images.urlpicture }}" alt=""></td>
+						<td class="align-middle">
+							<a href="{{ path('agria_picture_update',{id : images.id}) }}">
+								<i class="fas fa-pencil-alt"></i>
+							</a>
+						</td>
+						<td class="align-middle"> 
+							<a href="{{ path('agria_picture_delete',{id : images.id}) }}" onclick="return confirm(`êtes-vous sûr de vouloir supprimer cette image ?`) ">
+								<i class="fas fa-times-circle"></i>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "_backOffice/base.backoffice.html.twig" %}
+
+{% block body %}
+<div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+  <header class="bmd-layout-header">
+    <div class="navbar navbar-light bg-faded bg-dark text-light">
+      <button class="navbar-toggler text-light" type="button" data-toggle="drawer" data-target="#dw-p1">
+        <span class="sr-only text-light">Toggle drawer</span>
+        <i class="material-icons text-light" id="menu_text">menu</i>
+      </button>
+      <ul class="nav navbar-nav">
+{#        <li class="nav-item text-light"><a href="{{path('agria_main')}}"><img id="logo_agria" width="50px" src="{{ asset('assets/images/agria_logo_BLANC.png') }}" alt="log_agria"></a></li>#}
+      </ul>
+    </div>
+  </header>
+  <div id="dw-p1" class="bmd-layout-drawer bg-faded bg-dark">
+    <header>
+      <a href="{{ path('agria_backoffice') }}" class="navbar-brand text-light">Agria Back-Office</a>
+    </header>
+{#    <ul class="bg-dark list-group" id="nav_menu">#}
+{#      <a href="{{ path('agria_animal_showAll') }}" class="bg-dark list-group-item text-light">animal</a>#}
+{#      <a href="{{ path('agria_avatar_showAll') }}" class="bg-dark list-group-item text-light">avatar</a>#}
+{#      <a href="{{ path('agria_badge_showAll') }}" class="bg-dark list-group-item text-light">badge</a>#}
+{#      <a href="{{ path('agria_habitat_showAll') }}" class="bg-dark list-group-item text-light">habitat</a>#}
+{#      <a href="{{ path('agria_picture_showAll') }}" class="bg-dark list-group-item text-light">picture</a>#}
+{#      <a href="{{ path('agria_pin_showAll') }}" class="bg-dark list-group-item text-light">pin</a>#}
+{#      <a href="{{ path('agria_question_showAll') }}" class="bg-dark list-group-item text-light">question</a>#}
+{#      <a href="{{ path('agria_trophy_showAll') }}" class="bg-dark list-group-item text-light">trophy</a>#}
+{#      <a href="{{ path('agria_user_showAll') }}" class="bg-dark list-group-item text-light">user</a>#}
+{#    </ul>#}
+  </div>
+  
+  <main class="bmd-layout-content">
+    <div class="container">
+		{% block content %}
+    {% endblock %}
+      <!-- main content -->
+    </div>
+  </main>
+</div>
+	<main>
+	</main>
+		<footer class="page-footer bg-dark bg-faded text-light">
+			<div class="container">
+				{# <div class="row">
+					<div class="col l6 s12">
+						<h5 class="white-text">Footer Content</h5>
+						<p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+					</div>
+					<div class="col l4 offset-l2 s12">
+						<h5 class="white-text">Links</h5>
+					</div>
+				</div>
+			</div> #}
+			<div class="footer-copyright">
+				<div class="container py-3">
+					© 2021 Crazy 88
+				</div>
+			</div>
+	</footer>
+{% endblock %}

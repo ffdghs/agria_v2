@@ -1,0 +1,59 @@
+{% extends '_backOffice/layout.backoffice.html.twig' %}
+
+{% block title %}
+	{{parent()}}
+	- Les Questions
+{% endblock %}
+
+{% block content %}
+	<h2>Toutes les questions</h2>
+
+	<h4>
+		<a href="{{path('agria_question_addQuestion')}}">
+			<i class="fas fa-plus-circle"></i>
+			Ajouter une entrée</a>
+	</h4>
+
+	<table class="table thead-dark table-striped table-bordered table-light table-hover text-center table-sm">
+		<thead class="thead-dark">
+			<tr>
+				<th>#</th>
+				<th>Intitulé de la question</th>
+				<th>Proposition 1</th>
+				<th>Proposition 2</th>
+				<th>Proposition 3</th>
+				<th>Proposition 4</th>
+				<th>Réponse à la question</th>
+				<th>Nombres de points que rapporte la question</th>
+				<th>Difficulté de la question</th>
+				<th>Editer</th>
+				<th>Supprimer</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for question in allQuestions %}
+				<tr>
+					<td>{{ question.id }}</td>
+					<td>{{ question.namequestion }}</td>
+					<td>{{ question.response1Question }}</td>
+					<td>{{ question.response2Question}}</td>
+					<td>{{ question.response3Question}}</td>
+					<td>{{ question.response4Question}}</td>
+					<td>{{ question.answerQuestion }}</td>
+					<td>{{ question.pointQuestion }}</td>
+					<td>{{ question.difficultyQuestion }}</td>
+					<td>
+						<a href="{{ path('agria_question_update',{id : question.id}) }}">
+							<i class="fas fa-pencil-alt"></i>
+						</a>
+					</td>
+					<td>
+						<a href="{{ path('agria_question_delete',{id : question.id}) }}" onclick="return confirm(`êtes-vous sûr de vouloir supprimer cette question ?`) ">
+							<i class="fas fa-times-circle"></i>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		{% endfor %}
+	</table>
+</div>{% endblock %}

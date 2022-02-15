@@ -1,0 +1,41 @@
+{% extends '_backOffice/layout.backoffice.html.twig' %}
+
+{% block title %}
+ {{parent()}} - Pins
+{% endblock %}
+
+{% block content %}
+    <h2>Tous les Pins</h2>
+    <h4>
+        <a href="{{ path('agria_pin_addPin') }}"><i class="fas fa-plus-circle"></i> Ajouter une entrée</a>
+    </h4>
+    <table class="table thead-dark table-striped table-bordered table-light table-hover text-center table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th>id</th> 
+                <th>Région</th>
+                <th>Animal</th>
+                <th>Longitude</th>
+                <th>Latitude</th>
+                <th>style</th>
+                <th>Editer</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pin in allPins %}
+            <tr>
+                <td>{{pin.id}}</td>
+                <td>{{pin.idRegionPin.id}}</td> 
+                <td>{{pin.idAnimalPin.id}}</td> 
+                <td>{{pin.longitudepin}}</td>
+                <td>{{pin.latitudepin}}</td>
+                <td><img class="responsive-img" width="200px" src="{{ asset('assets/images/pin/') }}{{ pin.stylepin }}" alt=""></td>
+                <td><a href="{{ path('agria_pin_update',{id : pin.id}) }}"><i class="fas fa-pencil-alt"></a></i></td>
+                <td><a href="{{ path('agria_pin_delete',{id : pin.id}) }}" onclick="return confirm(`êtes-vous sûr de vouloir supprimer ce pin ?`) "><i class="fas fa-times-circle"></i></a></td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}

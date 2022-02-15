@@ -1,0 +1,51 @@
+{% extends '_backOffice/layout.backoffice.html.twig' %}
+
+{% block title %}
+	{{parent()}}
+	- Liste des Badges
+{% endblock %}
+
+
+{% block content %}
+	<div class="container">
+		<h2>Tous les Badges</h2>
+		<h4>
+			<a href="{{path('agria_badge_addBadge')}}">
+				<i class="fas fa-plus-circle"></i> Ajouter une entrée</a>
+		</h4>
+		<table class="table thead-dark table-striped table-bordered table-light table-hover text-center table-sm">
+			<thead class="thead-dark">
+				<tr>
+					<th>#</th>
+					<th>Nom du Badge</th>
+					<th>Photo du badge</th>
+					<th>Description du badge</th>
+					<th>Editer</th>
+					<th>Supprimer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for badge in allBadges %}
+					<tr>
+						<td class="align-middle">{{ badge.id }}</td>
+						<td class="align-middle">{{ badge.namebadge }}</td>
+						<td class="align-middle"><img class="responsive-img" width="200px" src="{{ asset('assets/images/badge/') }}{{ badge.urlbadge }}" alt="badge pour enfant"></td>
+						<td class="align-middle">{{ badge.descriptionbadge }}</td>
+						<td class="align-middle">
+							<a href="{{ path('agria_badge_update',{id: badge.id}) }}">
+								<i class="fas fa-pencil-alt"></i>
+							</a>
+						</td>
+							<td class="align-middle">
+								<a href="{{ path('agria_badge_delete', {id: badge.id}) }}" onclick="return confirm('Voulez vous supprimer cette entrée ?')">
+									<i class="fas fa-times-circle"></i>
+								</a>
+							</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+
+{% endblock %}

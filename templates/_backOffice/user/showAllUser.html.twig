@@ -1,0 +1,48 @@
+{% extends '_backOffice/layout.backoffice.html.twig' %}
+
+{% block title %}
+	{{parent()}}
+	- Les trophées
+{% endblock %}
+
+
+{% block content %}
+	<h2>Tous les users</h2>
+	<h4>
+		<a href="{{path('agria_trophy_addTrophy')}}">
+			<i class="fas fa-plus-circle"></i> Ajouter une entrée</a>
+	</h4>
+	<table class="table thead-dark table-striped table-bordered table-light table-hover text-center table-sm">
+		<thead class="thead-dark">
+			<tr>
+				<th>id</th>
+				<th>Id Avatar</th>
+				<th>Id Badge</th>
+				<th>Login</th>
+				<th>Rôle</th>
+				<th>email</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for user in allUsers %}
+				<tr>
+					<th>{{ user.id }}</th>
+					{% if user.idAvatarUser.id is defined %}
+					<td>{{ user.idAvatarUser.id }}</td>
+					{% else %}
+					<td></td>	
+					{% endif %}
+					{% if user.idBadgeUser.id is defined %}
+					<td>{{ user.idBadgeUser.id }}</td>
+					{% else %}
+					<td></td>
+					{% endif %}
+					<td>{{user.loginUser}}</td>	
+					{# <td>{{user.Roles}}</td>	 #}
+					<td></td>
+					<td>{{user.EmailUser}}</td>	
+				</tr>
+			</tbody>
+		{% endfor %}
+	</table>
+</div>{% endblock %}

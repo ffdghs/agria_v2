@@ -1,0 +1,47 @@
+{% extends '_backOffice/layout.backoffice.html.twig' %}
+
+{% block title %}
+	{{parent()}}
+	- Les trophées
+{% endblock %}
+
+
+{% block content %}
+	<h2>Tous les trophées</h2>
+	<h4>
+		<a href="{{path('agria_trophy_addTrophy')}}">
+			<i class="fas fa-plus-circle"></i> Ajouter une entrée</a>
+	</h4>
+	<table class="table thead-dark table-striped table-bordered table-light table-hover text-center table-sm">
+		<thead class="thead-dark">
+			<tr>
+				<th>#</th>
+				<th>Name</th>
+				<th>Picture</th>
+				<th>Description</th>
+				<th>Editer</th>
+				<th>Supprimer</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for trophy in allTrophies %}
+				<tr>
+					<td class="align-middle">{{ trophy.id }}</td>
+					<td class="align-middle">{{ trophy.nametrophy }}</td>
+					<td class="align-middle"><img width="200px" src="{{ asset('assets/images/trophy/') }}{{ trophy.urltrophy }}" alt=""></td>
+					<td class="align-middle">{{ trophy.descriptiontrophy }}</td>
+					<td class="align-middle">
+						<a href="{{ path('agria_trophy_update',{id : trophy.id}) }}">
+							<i class="fas fa-pencil-alt"></i>
+						</a>
+					</td>
+					<td class="align-middle">
+							<a href="{{ path('agria_trophy_delete',{id : trophy.id}) }}"onclick="return confirm(`êtes-vous sûr de vouloir supprimer ce trophée ?`) ">
+								<i class="fas fa-times-circle"></i>
+							</a>
+					</td>
+				</tr>
+			</tbody>
+		{% endfor %}
+	</table>
+</div>{% endblock %}
