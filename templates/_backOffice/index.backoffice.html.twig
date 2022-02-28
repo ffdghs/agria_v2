@@ -1,82 +1,9 @@
-{% extends '_backOffice/layout.backoffice.html.twig' %}
+{% extends "_backOffice/base.backoffice.html.twig" %}
 
 {% block title %}
 	{{parent()}}
 {% endblock %}
 
-{% block content %}
-	<div class="container">
-		<div class="row">
-			<div class="col">
-				<h2>Statistiques de la base de données</h2>
-			</div>
-		</div>
-		<div class="row justify-content-center">
-			{# <div class="col"> #}
-			{% for table in tables %}
-				{% set pathTable = 'agria_' ~ table.TABLE_NAME ~ '_showAll' %}
-				<div class="card text-center mr-2 mb-2">
-					<div class="card-header">
-						Table
-						{{ loop.index }}
-					</div>
-					<div class="card-body">
-						{% if (table.TABLE_NAME == 'animal') or (table.TABLE_NAME == 'avatar') or (table.TABLE_NAME == 'badge') or (table.TABLE_NAME == 'habitat') or (table.TABLE_NAME == 'picture') or (table.TABLE_NAME == 'pin') or (table.TABLE_NAME == 'question') or (table.TABLE_NAME == 'trophy') or (table.TABLE_NAME == 'user')  %}
-{#							<a href="{{path(pathTable)}}">#}
-{#								<h5 class="card-title">{{ table.TABLE_NAME }}</h5>#}
-{#							</a>#}
-						{% else %}
-							<h5 class="card-title">{{ table.TABLE_NAME }}</h5>
-						{% endif %}
-						<p class="card-text">Nombre d'entrées :
-							{{ table.TABLE_ROWS }}</p>
-						<p class="card-text">Dernier index :
-							{{ table.AUTO_INCREMENT }}</p>
-						<p class="card-text">Format :
-							{{ table.ROW_FORMAT }}</p>
-						<p class="card-text">Description :
-							{{ table.TABLE_COMMENT }}</p>
-						{# <a href="#" class="btn btn-primary">Go somewhere</a> #}
-					</div>
-					<div class="card-footer text-muted">
-						{% if table.UPDATE_TIME == null %}
-							Dernière Mise à Jour :
-							{{ table.CREATE_TIME }}
-						{% else %}
-							Dernière Mise à Jour :
-							{{ table.UPDATE_TIME }}
-						{% endif %}
-					</div>
-				</div>
-		{% endfor %}
-		</div>
-		<div>
-			<h2>Derniers users enregistrés</h2>
-			<table class="table thead-dark table-striped table-bordered table-light table-hover text-center table-sm" id="table-animal">
-				<thead class="thead-dark">
-					<tr>
-						<th>#</th>
-						<th>Login</th>
-						<th>Nom</th>
-						<th>Email</th>
-						<th>Role</th>
-					</tr>
-				</thead>
-{#				<tbody>#}
-{#					{% for user in users %}#}
-{#						<tr>#}
-{#							<td class="align-middle">{{user.id}}</td>#}
-{#							<td class="align-middle">{{ user.loginuser }}</td>#}
-{#							<td class="align-middle">{{ user.nameuser }}</td>#}
-{#							<td class="align-middle">{{ user.emailuser }}</td>#}
-{#							<td class="align-middle">{{ user.roles[0] }}</td>#}
-{#						</tr>#}
-{#					{% endfor %}#}
-{#				</tbody>#}
-			</table>
-		</div>
-
-		{# </div> #}
-
-	</div>
+{% block body %}
+	<div id="backoffice"></div>
 {% endblock %}

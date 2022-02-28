@@ -2,13 +2,14 @@
 
 namespace App\Domain\Entity;
 
-use App\Infrastructure\Repository\Doctrine\AvatarRepository;
+use App\Domain\Repository\AvatarRepositoryInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ORM\Entity(repositoryClass=AvatarRepository::class)
+ * @ORM\Entity(repositoryClass=AvatarRepositoryInterface::class)
  */
 class Avatar
 {
@@ -16,21 +17,25 @@ class Avatar
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"avatar_list"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"avatar_list"})
      */
     private $name_avatar;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"avatar_list"})
      */
     private $url_avatar;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"avatar_list"})
      */
     private $description_avatar;
 

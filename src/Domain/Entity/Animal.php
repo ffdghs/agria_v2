@@ -6,6 +6,7 @@ use App\Infrastructure\Repository\Doctrine\AnimalRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=AnimalRepository::class)
@@ -23,48 +24,56 @@ class Animal
     /**
      * @var string
      * @ORM\Column(type="string", length=255)
+     * @Groups({"animal_list"})
      */
     private $name_animal;
 
     /**
      * @var string
      * @ORM\Column(type="string", length=255)
+     * @Groups({"animal_list"})
      */
     private $diet_animal;
 
     /**
      * @var string
      * @ORM\Column(type="string", length=255)
+     * @Groups({"animal_list"})
      */
     private $status_animal;
 
     /**
      * @var string
      * @ORM\Column(type="string", length=255)
+     * @Groups({"animal_list"})
      */
     private $family_animal;
 
     /**
      * @var string
      * @ORM\Column(type="string", length=255)
+     * @Groups({"animal_list"})
      */
     private $population_animal;
 
     /**
      * @var string
      * @ORM\Column(type="string", length=255)
+     * @Groups({"animal_list"})
      */
     private $description_animal;
 
     /**
      * @var string
      * @ORM\Column(type="string", length=255)
+     * @Groups({"animal_list"})
      */
     private $nickname_animal;
 
     /**
      * @var string
      * @ORM\Column(type="string", length=255)
+     * @Groups({"animal_list"})
      */
     private $main_picture_animal;
 
@@ -78,30 +87,35 @@ class Animal
     /**
      * @var Habitat[]
      * @ORM\ManyToMany(targetEntity=Habitat::class, inversedBy="animals")
+     * @Groups({"animal_list"})
      */
     private $habitats;
 
     /**
      * @var Picture[]
      * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="animal")
+     * @Groups({"animal_list"})
      */
     private $pictures;
 
     /**
      * @var string
      * @ORM\Column(type="string", length=255)
+     * @Groups({"animal_list"})
      */
     private $appearance_animal;
 
     /**
      * @var integer
      * @ORM\Column(type="integer")
+     * @Groups({"animal_list"})
      */
     private $legs_animal;
 
     /**
      * @var string
      * @ORM\Column(type="string", length=255)
+     * @Groups({"animal_list"})
      */
     private $social_animal;
 
@@ -114,12 +128,14 @@ class Animal
     /**
      * @var string
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"animal_list"})
      */
     private $cutOut_image_animal;
 
     /**
      * @var string
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"animal_list"})
      */
     private $descMore_animal;
 

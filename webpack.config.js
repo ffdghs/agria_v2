@@ -21,7 +21,8 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/js/app.js')
-    .addEntry('bo', './assets/js/bo.js')
+    // .addEntry('bo', './assets/js/bo.js')
+    .addEntry('bo', './assets/js/backoffice/backoffice.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -59,8 +60,8 @@ Encore
         pattern: /\.(png|jpg|jpeg|svg|ico|webp)$/
     })
 
-    // enables Sass/SCSS support
-    //.enableSassLoader()
+    .enableVueLoader()
+    .enableSassLoader()
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()

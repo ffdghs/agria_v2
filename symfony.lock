@@ -156,6 +156,9 @@
             ".env"
         ]
     },
+    "symfony/form": {
+        "version": "v5.4.3"
+    },
     "symfony/framework-bundle": {
         "version": "5.4",
         "recipe": {
@@ -181,10 +184,16 @@
     "symfony/http-kernel": {
         "version": "v5.4.4"
     },
+    "symfony/options-resolver": {
+        "version": "v5.4.3"
+    },
     "symfony/password-hasher": {
         "version": "v5.4.3"
     },
     "symfony/polyfill-intl-grapheme": {
+        "version": "v1.24.0"
+    },
+    "symfony/polyfill-intl-icu": {
         "version": "v1.24.0"
     },
     "symfony/polyfill-intl-normalizer": {
@@ -249,6 +258,9 @@
         "version": "v5.4.3"
     },
     "symfony/security-http": {
+        "version": "v5.4.3"
+    },
+    "symfony/serializer": {
         "version": "v5.4.3"
     },
     "symfony/service-contracts": {

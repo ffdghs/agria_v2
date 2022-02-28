@@ -2,3 +2,18 @@ agria_backoffice:
   path: /bo
   methods: [GET]
   controller: App\Application\Controller\Backoffice\BackOfficeAction
+
+agria_get_animals:
+  path: /get/animals
+  methods: [GET]
+  controller: App\Application\Controller\Backoffice\Animal\GetAnimalsAction
+
+agria_add_animal:
+  path: /bo/add-animal
+  methods: [GET]
+  controller: App\Application\Controller\Backoffice\Animal\AddAnimalAction
+
+agria_get_avatars:
+  path: /get/avatars
+  methods: [GET]
+  controller: App\Application\Controller\Backoffice\Avatar\GetAvatarsAction

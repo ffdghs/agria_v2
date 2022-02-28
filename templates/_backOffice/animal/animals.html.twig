@@ -18,7 +18,7 @@
         <div class="row overflow-auto">
             <div class="col">
                 <h2>Table Animal</h2>
-                <h4><a href="{{path('agria_animal_addAnimal')}}"><i class="fas fa-plus-circle"></i> Ajouter une entrée</a></h4>
+                <h4><a href="{{path('agria_add_animal')}}"><i class="fas fa-plus-circle"></i> Ajouter une entrée</a></h4>
                 <table class="table thead-dark table-striped table-bordered table-light table-hover text-center table-sm" id="table-animal">
                     <thead class="thead-dark">
                         <tr>
@@ -46,8 +46,8 @@
                             <tr>
                                 <td class="align-middle">{{animal.id}}</td>
                                 <td class="align-middle">{{ animal.nameanimal }}</td>
-                                <td class="align-middle"><img width="200px" src="{{ asset('assets/images/animal/') }}{{ animal.mainpictureanimal }}" alt=""></td>
-                                <td class="align-middle"><img width="200px" src="{{ asset('assets/images/animal/cutOuts/') }}{{ animal.cutoutimageanimal }}" alt=""></td>
+                                <td class="align-middle"><img width="200px" src="{{ asset('build/images/animal/') }}{{ animal.mainpictureanimal }}" alt=""></td>
+                                <td class="align-middle"><img width="200px" src="{{ asset('build/images/animal/cutOuts/') }}{{ animal.cutoutimageanimal }}" alt=""></td>
                                 <td class="align-middle">{{ animal.dietanimal }}</td>
                                 <td class="align-middle">{{ animal.statusanimal }}</td>
                                 <td class="align-middle">{{ animal.familyanimal }}</td>
@@ -73,8 +73,8 @@
                                     <td class="align-middle">{{ habitat2 | join }}</td>
                                     
                                 {% endif %}
-                                <td class="align-middle"><a href="{{ path('agria_animal_update', {id: animal.id}) }}"><i class="fas fa-pencil-alt"></i></a></td>
-                                <td class="align-middle"><a href="{{ path('agria_animal_delete', {id: animal.id}) }}" onclick="return confirm('Voulez vous supprimer cette entrée ?')"><i class="fas fa-times-circle"></i></a></td>
+{#                                <td class="align-middle"><a href="{{ path('agria_animal_update', {id: animal.id}) }}"><i class="fas fa-pencil-alt"></i></a></td>#}
+{#                                <td class="align-middle"><a href="{{ path('agria_animal_delete', {id: animal.id}) }}" onclick="return confirm('Voulez vous supprimer cette entrée ?')"><i class="fas fa-times-circle"></i></a></td>#}
                             </tr>    
                         {% endfor %}
                     </tbody>
