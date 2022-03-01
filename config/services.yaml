@@ -35,3 +35,5 @@ services:
         class: App\Infrastructure\Repository\Doctrine\AnimalRepository
     App\Domain\Repository\AvatarRepositoryInterface:
         class: App\Infrastructure\Repository\Doctrine\AvatarRepository
+    App\Domain\Repository\UserRepositoryInterface:
+        class: App\Infrastructure\Repository\Doctrine\UserRepository
