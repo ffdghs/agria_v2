@@ -4,47 +4,39 @@ namespace App\Application\Controller\Backoffice\Animal;
 
 use App\Action;
 use App\Domain\Entity\Animal;
-use App\Domain\Form\AnimalType;
-use Doctrine\Persistence\ManagerRegistry;
+use App\Domain\Service\AnimalService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class AddAnimalAction extends AbstractController implements Action
 {
-    private $managerRegistry;
+    private $animalService;
+    private $serializer;
+    private $normalizer;
 
     public function __construct(
-        ManagerRegistry $managerRegistry
+        AnimalService $animalService,
+        SerializerInterface $serializer,
+        NormalizerInterface $normalizer
     )
     {
-        $this->managerRegistry = $managerRegistry;
+        $this->animalService = $animalService;
+        $this->serializer = $serializer;
+        $this->normalizer = $normalizer;
     }
 
     public function __invoke(Request $request): Response
     {
-        $animal = new Animal();
+        $animal = $this->serializer->deserialize($request->getContent(), Animal::class, JsonEncoder::FORMAT);
 
-        $form = $this->createForm(AnimalType::class, $animal);
+        $animal = $this->animalService->saveAnimal($animal);
 
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid())
-        {
-//            $animal->setMainPictureAnimal($urlPhoto);
-
-            $em = $this->managerRegistry->getManager();
-
-            $em->persist($animal);
-
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('agria_get_animals'));
-        }
-
-        return $this->render('_backOffice/animal/viewAnimal.html.twig', [
-            'form' => $form->createView()
-        ]);
+        return new JsonResponse($this->normalizer->normalize($animal, JsonEncoder::FORMAT, ['groups' => ['animal_list']]));
     }
 
 }
