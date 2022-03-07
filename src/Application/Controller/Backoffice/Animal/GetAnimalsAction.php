@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class GetAnimalsAction extends AbstractController implements Action
+class GetAnimalsAction implements Action
 {
     private $animalService;
     private $normalizer;

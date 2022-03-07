@@ -9,11 +9,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
-class AddAnimalAction extends AbstractController implements Action
+class AddAnimalAction implements Action
 {
     private $animalService;
     private $serializer;
@@ -32,7 +33,14 @@ class AddAnimalAction extends AbstractController implements Action
 
     public function __invoke(Request $request): Response
     {
-        $animal = $this->serializer->deserialize($request->getContent(), Animal::class, JsonEncoder::FORMAT);
+        try {
+            $animal = $this->serializer->deserialize($request->getContent(), Animal::class, JsonEncoder::FORMAT);
+            if (!$animal instanceof Animal) {
+                throw new \Exception('Deserialization failed');
+            }
+        } catch (\Exception $e) {
+            throw new BadRequestHttpException('Bad request');
+        }
 
         $animal = $this->animalService->saveAnimal($animal);
 

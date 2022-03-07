@@ -3,6 +3,11 @@ agria_backoffice:
   methods: [GET]
   controller: App\Application\Controller\Backoffice\BackOfficeAction
 
+agria_get_animal:
+  path: /get/animal/{id}
+  methods: [GET]
+  controller: App\Application\Controller\Backoffice\Animal\GetAnimalAction
+
 agria_get_animals:
   path: /get/animals
   methods: [GET]
