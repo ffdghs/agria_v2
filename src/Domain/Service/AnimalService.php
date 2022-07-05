@@ -15,11 +15,28 @@ class AnimalService
     }
 
     /**
+     * @param array $criteria
+     * @param array|null $orderBy
+     * @param int|null $limit
+     * @param int|null $start
+     * @return Animal[]
+     */
+    public function getAnimalsBy(array $criteria, ?array $orderBy = null, ?int $limit = null, ?int $start = null): array
+    {
+        return $this->animalRepository->findBy($criteria, $orderBy, $limit, $start);
+    }
+
+    /**
      * @return Animal[]
      */
     public function getAnimals(): array
     {
         return $this->animalRepository->findAll();
+    }
+
+    public function getAnimal(int $id): Animal
+    {
+        return $this->animalRepository->findBy(['id' => $id])[0];
     }
 
     /**

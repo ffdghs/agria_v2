@@ -10,6 +10,16 @@ interface AnimalRepositoryInterface
      * @return Animal[]
      */
     public function findAll():array;
+
+    /**
+     * @param array $criteria
+     * @param array|null $orderBy
+     * @param int|null $limit
+     * @param int|null $offset
+     * @return Animal[]
+     */
+    public function findBy(array $criteria, ?array $orderBy = null, $limit = null, $offset = null);
+
     /**
      * @param string $name
      * @return Animal[]
